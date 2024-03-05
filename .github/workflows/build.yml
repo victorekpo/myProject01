@@ -15,7 +15,11 @@ jobs:
       
       - name: Retrieve API Key
         run: echo "window.API_KEY='${{ secrets.API_KEY }}'" > $GITHUB_WORKSPACE/apikey.js
-
+      - name: Publish API Key as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: ${{ github.workspace }}
+          name: apikey.js
 #       - name: Retrieve API key
 #         env:
 #           API_KEY: ${{ secrets.API_KEY }}
